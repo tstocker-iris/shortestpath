@@ -24,6 +24,8 @@ public class Location {
      */
     private Location[] neighbors;
 
+    private Location from;
+
     /**
      * CONSTANTE 180 Degrés
      */
@@ -44,11 +46,33 @@ public class Location {
         this.name = pName;
         this.latitude = degToRad(pLatitude);
         this.longitude = degToRad(pLongitude);
-        //this.distance = Math.random() * 100;
+        this.distance = Double.POSITIVE_INFINITY;
+    }
+
+    public void findPathTo(Location to)
+    {
+        LocationSet set = new LocationSet();
+        this.distance = 0;
+        Location cur = this;
+
+
+    }
+
+    public Location getFrom()
+    {
+        return this.from;
+    }
+
+    public void setFrom(Location pFrom) {
+        this.from = pFrom;
     }
 
     public double getDistance() {
         return this.distance;
+    }
+
+    public void setDistance(double pDistance) {
+        this.distance = pDistance;
     }
 
     public void setNeighbors(Location... pNeighbors)

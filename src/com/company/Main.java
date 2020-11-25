@@ -43,7 +43,7 @@ public class Main {
 
         //Question2D();
 
-
+        evry.findPathTo(bilbao);
     }
 
     public static void Question2D()
