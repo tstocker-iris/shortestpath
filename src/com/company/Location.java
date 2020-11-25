@@ -55,7 +55,43 @@ public class Location {
         this.distance = 0;
         Location cur = this;
 
+        while (cur != null && cur != to) {
+            cur.proceedNode(set);
 
+            cur = set.removeMin();
+        }
+
+        if (cur == null) {
+            System.out.println("Impossible d'atteindre " + to.name + " depuis " + this.name);
+        } else if (cur == to) {
+            System.out.println(to.name + " est a une distance de " + this.name + " de " + to.distance + "km");
+            System.out.println("Itinéraire en partant de " + to.name);
+        }
+    }
+
+    public void proceedNode(LocationSet set)
+    {
+        // On parcours les voisins de la location
+        for (int i = 0; i < this.neighbors.length; i++)
+        {
+            Location n = this.neighbors[i];
+            // Si le voisin a une distance infini, c'est qu'il n'a pas encore été atteint
+            if (n.distance == Double.POSITIVE_INFINITY) {
+                // On l'ajoute au set
+                set.add(n);
+            }
+
+            // On calcule la distance entre this et son voisin parcouru
+            this.distance += this.distanceTo(n);
+
+            // Si la distance de this est plus petite que la distance de N
+            if (this.distance < n.distance) {
+                // On modifie la distance de N avec la distance de this
+                n.distance = this.distance;
+                // On alloue N.from avec this (pour se rappeler qu'on a atteint cette distance en partant de this)
+                n.from = this;
+            }
+        }
     }
 
     public Location getFrom()
