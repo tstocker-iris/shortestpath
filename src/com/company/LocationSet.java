@@ -38,7 +38,7 @@ public class LocationSet {
     public void add(Location pLocation) {
         // Si le nombre d'élément est supérieur ou égal à la taille de notre tableau
         if (this.nbLocations >= this.locations.length) {
-            System.out.println("On réalloue le tableau avec " + (this.nbLocations + 1) + " éléments");
+            //System.out.println("On réalloue le tableau avec " + (this.nbLocations + 1) + " éléments");
             // On stocke le tableau courant dans une variable tampon
             Location[] old = this.locations;
             // On réalloue un nouveau tableau de taille length + 1;

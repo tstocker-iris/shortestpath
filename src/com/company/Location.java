@@ -49,6 +49,16 @@ public class Location {
         this.distance = Double.POSITIVE_INFINITY;
     }
 
+    public void reinit()
+    {
+        if (this.distance != Double.POSITIVE_INFINITY) {
+            this.distance = Double.POSITIVE_INFINITY;
+            for (int i = 0; i < this.neighbors.length; i++) {
+                this.neighbors[i].reinit();
+            }
+        }
+    }
+
     public void findPathTo(Location to)
     {
         LocationSet set = new LocationSet();
@@ -67,6 +77,8 @@ public class Location {
             System.out.println(to.name + " est a une distance de " + this.name + " de " + to.distance + "km");
             System.out.println("Itinéraire en partant de " + to.name);
         }
+
+        this.reinit();
     }
 
     public void proceedNode(LocationSet set)

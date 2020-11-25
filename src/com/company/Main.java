@@ -44,6 +44,8 @@ public class Main {
         //Question2D();
 
         evry.findPathTo(bilbao);
+        angers.findPathTo(toulouse);
+        //toulouse.findPathTo(angers);
     }
 
     public static void Question2D()
