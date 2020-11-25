@@ -17,6 +17,8 @@ public class Location {
      */
     private double longitude;
 
+    private double distance;
+
     /**
      * Villes adjacentes
      */
@@ -42,6 +44,11 @@ public class Location {
         this.name = pName;
         this.latitude = degToRad(pLatitude);
         this.longitude = degToRad(pLongitude);
+        //this.distance = Math.random() * 100;
+    }
+
+    public double getDistance() {
+        return this.distance;
     }
 
     public void setNeighbors(Location... pNeighbors)
